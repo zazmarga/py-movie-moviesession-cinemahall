@@ -1,10 +1,6 @@
 # Movie, CinemaHall, and MovieSession
 
-- Warning: Use `pytest app` for testing - not simple `pytest`
 - Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
-
-**Note**: In `main.py` you can extend but can't modify
-lines 1-3.
 
 In `db/models.py` you already have tables you created earlier. Now
 you have to create tables:
@@ -66,38 +62,45 @@ print(movie_session)
 ```
 
 Also, implement a few services for these tables. A service
-represents class with static methods for the certain table.
-Create such services:
-1. `MovieService`, implements such methods:
-   - `get_movies`, returns all movies
-   - `get_movie_by_id`, takes `movie_id` - id of the movie,
-returns movie with the given id.
-   - `get_movies_by_genres_and_actors`, takes `genres_ids` - list
-of genres ids, `actors_ids` - list of actors ids. 
-       - If given both 
-`genres_ids` and `actors_ids`, the method returns the queryset
-with movies, that have at least one genre from `genres_ids` **and**
+represents module with functions with queries for the certain 
+table.
+Create a package `services` next to the package `db`. Inside 
+the package `services` create such service modules:
+1. `movie.py`, implements such functions:
+   - `get_movies`, takes optional `genres_ids` - a list
+of genres ids, optional `actors_ids` - a list of actors ids. 
+       - If `genres_ids` and `actors_ids` are not provided,
+the method returns all movies
+       - If both 
+`genres_ids` and `actors_ids` are provided, the 
+method returns movies, that have at least one genre from `genres_ids` **and**
 one actor from `actors_ids`. 
-       - If only `genres_ids` is given, the method returns the queryset
+       - If only `genres_ids` is provided, the method returns the queryset
 with movies, that have at least one genre from `genres_ids`
-       - If only `actors_ids` is given, the method returns the queryset
+       - If only `actors_ids` is provided, the method returns the queryset
 with movies, that have at least one actor from `actors_ids`
-   - `create_movie`, takes `movie_title` and `movie_description`, creates
-movie with given parameters
+   - `get_movie_by_id`, takes `movie_id` - id of the movie,
+returns movie with the provided id.
+   - `create_movie`, takes `movie_title`, `movie_description`, 
+optional `genres_ids` and optional `actors_ids`, `genres_ids`
+and `actors_ids` are the list of genres ids and the list of actors
+ids respectively, method
+creates movie with provided title and description, add him genres if
+`genres_ids` is provided, add him actors if `actors_ids` is provided.
 
 **Note**: You can use suffix `__id` to get access to the field `id`
 of related table inside `.filter()` method. You also can 
-use the suffix `__in`  to check if the value is in some list/tuple.
+use the suffix `__in`  to check if the value is in list/tuple.
 
-2. `CinemaHallService`, implements such methods:
+2. `cinema_hall.py`, implements such functions:
    - `get_cinema_halls`, returns all cinema halls
    - `create_cinema_hall`, takes `hall_name`, `hall_rows`, `hall_seats_in_row`,
-creates cinema hall with given parameters
-3. `MovieSessionService`, implements such methods:
+creates cinema hall with provided parameters
+3. `movies_session.py`, implements such functions:
    - `get_movies_sessions`, returns all movies sessions
    - `get_movie_session_by_id`, takes `movie_session_id` - id of the movie, 
-returns movie session with the given id
+returns movie session with the provided id
    - `get_movies_sessions_by_date`, takes string `date` in such form:
 "year-month-day", returns all movie sessions performed that day.
    - `delete_movie_session_by_id`, takes `session_id` - id of session,
-deletes movie session with the given id
+deletes movie session with the provided id
