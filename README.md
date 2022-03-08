@@ -97,10 +97,22 @@ use the suffix `__in`  to check if the value is in list/tuple.
    - `create_cinema_hall`, takes `hall_name`, `hall_rows`, `hall_seats_in_row`,
 creates cinema hall with provided parameters
 3. `movies_session.py`, implements such functions:
-   - `get_movies_sessions`, returns all movies sessions
+   - `create_movie_session`, takes `movie_show_time` - show time of the movie, 
+`movie_id` - id of the movie, `cinema_hall_id` - id of the cinema hall. Creates
+movie session with provided parameters
+   - `get_movies_sessions`, takes optional string `session_date` in such
+form: "year-month-day"
+       - if `session_date` is provided - returns all movie sessions for this 
+date
+       - else returns all movies sessions
+
+**Note**: You can use suffix `__date` to get access to date of the 
+`DateTimeField`
+
    - `get_movie_session_by_id`, takes `movie_session_id` - id of the movie, 
 returns movie session with the provided id
-   - `get_movies_sessions_by_date`, takes string `date` in such form:
-"year-month-day", returns all movie sessions performed that day.
+   - `update_movie_session`, takes `session_id`, optional `show_time`,
+optional `movie_id`, optional `cinema_hall_id`. Update movie session with
+provided `session_id` and set fields if appropriate values are provided
    - `delete_movie_session_by_id`, takes `session_id` - id of session,
 deletes movie session with the provided id
