@@ -105,10 +105,6 @@ form: "year-month-day"
        - if `session_date` is provided - returns all movie sessions for this 
 date
        - else returns all movies sessions
-
-**Note**: You can use suffix `__date` to get access to date of the 
-`DateTimeField`
-
    - `get_movie_session_by_id`, takes `movie_session_id` - id of the movie, 
 returns movie session with the provided id
    - `update_movie_session`, takes `session_id`, optional `show_time`,
@@ -116,3 +112,6 @@ optional `movie_id`, optional `cinema_hall_id`. Update movie session with
 provided `session_id` and set fields if appropriate values are provided
    - `delete_movie_session_by_id`, takes `session_id` - id of session,
 deletes movie session with the provided id
+
+**Note**: You can use suffix `__date` to get access to date of the 
+`DateTimeField`
