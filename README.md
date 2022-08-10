@@ -60,6 +60,9 @@ movie_session = MovieSession.objects.create(
 print(movie_session)
 # Speed 2021-11-29 16:40:00
 ```
+Use the following command to load prepared data from fixture to test and debug your code:
+  
+`python manage.py loaddata cinema_service_db_data.json`.
 
 Also, implement a few services for these tables. A service
 represents module with functions with queries for the certain 
