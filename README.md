@@ -62,7 +62,7 @@ print(movie_session)
 ```
 Use the following command to load prepared data from fixture to test and debug your code:
   
-`python manage.py loaddata cinema_service_db_data.json`.
+`python manage.py loaddata cinema_db_data.json`.
 
 Also, implement a few services for these tables. A service
 represents module with functions with queries for the certain 
