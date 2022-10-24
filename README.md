@@ -1,6 +1,6 @@
 # Movie, CinemaHall, and MovieSession
 
-- Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start
+Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 In `db/models.py` you already have tables you created earlier. Now
 you have to create tables:
@@ -118,3 +118,5 @@ deletes movie session with the provided id
 
 **Note**: You can use suffix `__date` to get access to date of the 
 `DateTimeField`
+
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
